@@ -77,16 +77,36 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      {
+        title: "150 Separadores Católicos para Imprimir | Guadalupe, Jesús, santos y más",
+      },
+      {
+        name: "description",
+        content:
+          "150 separadores católicos de 5 x 15 cm listos para imprimir en tamaño carta. Descarga inmediata. Paga con tarjeta, OXXO o SPEI.",
+      },
+      { name: "author", content: "Editora GPR" },
+      { name: "theme-color", content: "#f7f3ea" },
+      {
+        property: "og:title",
+        content: "150 Separadores Católicos para Imprimir",
+      },
+      {
+        property: "og:description",
+        content:
+          "Guadalupe, Jesús, santos, ángeles y versículos. Acceso inmediato y garantía de 7 días.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "es_MX" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@600;700;800&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
@@ -102,7 +122,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="es-MX">
       <head>
         <HeadContent />
       </head>
