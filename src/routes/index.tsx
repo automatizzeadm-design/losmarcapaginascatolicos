@@ -48,7 +48,7 @@ function Section({
 function Title({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <h2
-      className={`text-balance text-center font-display text-[2rem] leading-[1.15] text-foreground sm:text-[2.5rem] ${className}`}
+      className={`text-balance text-center font-display text-[1.7rem] leading-[1.2] text-foreground sm:text-[2.15rem] ${className}`}
     >
       {children}
     </h2>
@@ -111,7 +111,7 @@ function Hero() {
           </p>
         </div>
 
-        <h1 className="animate-rise-fade mx-auto mt-6 max-w-[22ch] text-balance font-display text-[2.4rem] leading-[1.08] text-foreground sm:text-[3.4rem]">
+        <h1 className="animate-rise-fade mx-auto mt-6 max-w-[26ch] text-balance font-display text-[2rem] leading-[1.14] text-foreground sm:text-[2.9rem]">
           150 Separadores Católicos{" "}
           <span className="text-gradient-gold">listos para imprimir</span>
         </h1>
@@ -418,7 +418,7 @@ function Offers() {
                 aria-hidden
               />
             </p>
-            <p className="font-price text-[2.6rem] font-bold leading-none text-foreground">
+            <p className="font-price text-[2.3rem] font-bold leading-none tracking-tight text-foreground">
               {PRICING.basic.price}
             </p>
           </div>
@@ -478,7 +478,7 @@ function Offers() {
                 aria-hidden
               />
             </p>
-            <p className="font-price text-[3.4rem] font-bold leading-none text-success">
+            <p className="font-price text-[3rem] font-bold leading-none tracking-tight text-success">
               {PRICING.full.price}
             </p>
             <p className="mt-1.5 text-[0.78rem] text-muted-foreground">

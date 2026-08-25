@@ -59,9 +59,11 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
-  --font-price: "Playfair Display", ui-serif, Georgia, serif;
+  /* Poppins na página inteira: títulos, corpo e preços.
+     A distinção passa a vir do peso e do tamanho, não da família. */
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-price: "Poppins", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
@@ -140,13 +142,16 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* A Poppins é geométrica e larga: pesa menos que a serifa que estava aqui
+     no mesmo peso, e ocupa mais linha. Por isso sobe pra 600 e fecha o
+     entreletras — senão os títulos ficam frouxos e quebram feio no celular. */
   h1,
   h2,
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    font-weight: 600;
+    letter-spacing: -0.025em;
   }
 }
 
