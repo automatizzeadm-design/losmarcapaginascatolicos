@@ -482,6 +482,8 @@ function Offers() {
               loading="lazy"
             />
           </div>
+
+          <p className="mt-4 text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-gold">
             {COPY.offers.full.premiumLabel}
           </p>
           <div className="mt-2 grid gap-2 sm:grid-cols-2">
