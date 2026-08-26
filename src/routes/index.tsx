@@ -339,21 +339,26 @@ function Bonuses() {
       <Title className="mt-3">{COPY.bonuses.title}</Title>
       <Lead>{COPY.bonuses.lead}</Lead>
 
-      <div className="mt-9 grid gap-4 sm:grid-cols-2">
+      {/* Duas colunas já no celular: 1|2 em cima, 3|4 embaixo.
+          Empilhado, esse bloco era o trecho mais alto da página inteira.
+          Tipografia e respiros encolhem no mobile pra caber sem apertar. */}
+      <div className="mt-9 grid grid-cols-2 gap-3 sm:gap-4">
         {COPY.bonuses.items.map((b) => (
           <article
             key={b.title}
-            className={`card-soft flex flex-col p-6 ${b.premium ? "border-gold/50" : ""}`}
+            className={`card-soft flex flex-col p-4 sm:p-6 ${b.premium ? "border-gold/50" : ""}`}
           >
-            <p className="text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-gold">
+            <p className="text-[0.66rem] font-semibold uppercase tracking-[0.1em] text-gold sm:text-[0.74rem] sm:tracking-[0.12em]">
               {b.tag}
             </p>
             {"badge" in b && b.badge && (
-              <p className="mt-1.5 inline-block self-start rounded-full bg-primary/10 px-2.5 py-1 text-[0.68rem] font-medium text-primary">
+              <p className="mt-1.5 inline-block self-start rounded-full bg-primary/10 px-2 py-0.5 text-[0.6rem] font-medium leading-snug text-primary sm:px-2.5 sm:py-1 sm:text-[0.68rem]">
                 {b.badge}
               </p>
             )}
-            <h3 className="mt-2 font-display text-xl leading-snug text-foreground">{b.title}</h3>
+            <h3 className="mt-2 font-display text-[0.98rem] leading-snug text-foreground sm:text-xl">
+              {b.title}
+            </h3>
 
             {(() => {
               const img = BONUS_IMAGES[b.title];
@@ -367,14 +372,17 @@ function Bonuses() {
               ) : null;
             })()}
 
-            <p className="mt-2 flex-1 text-[0.88rem] leading-relaxed text-muted-foreground">
+            <p className="mt-2 flex-1 text-[0.78rem] leading-relaxed text-muted-foreground sm:text-[0.88rem]">
               {b.text}
             </p>
 
             {"features" in b && b.features && (
-              <ul className="mt-4 grid gap-2">
+              <ul className="mt-3 grid gap-1.5 sm:mt-4 sm:gap-2">
                 {b.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-[0.85rem] text-foreground/85">
+                  <li
+                    key={f}
+                    className="flex items-start gap-1.5 text-[0.72rem] leading-snug text-foreground/85 sm:gap-2 sm:text-[0.85rem]"
+                  >
                     <span className="mt-0.5 shrink-0 text-success" aria-hidden>
                       ✓
                     </span>
@@ -385,15 +393,15 @@ function Bonuses() {
             )}
 
             {b.premium && (
-              <p className="mt-4 flex items-baseline gap-2 border-t border-border pt-3">
-                <span className="relative text-[0.9rem] text-muted-foreground">
+              <p className="mt-3 flex flex-col items-start gap-0.5 border-t border-border pt-2.5 sm:mt-4 sm:flex-row sm:items-baseline sm:gap-2 sm:pt-3">
+                <span className="relative text-[0.76rem] text-muted-foreground sm:text-[0.9rem]">
                   Antes {PRICING.bonusAnchor}
                   <span
                     className="absolute inset-x-0 top-1/2 h-[1.5px] -rotate-3 bg-destructive/80"
                     aria-hidden
                   />
                 </span>
-                <span className="font-price text-[1.2rem] font-bold text-success">
+                <span className="font-price text-[1.05rem] font-bold text-success sm:text-[1.2rem]">
                   {COPY.bonuses.freeLabel}
                 </span>
               </p>
