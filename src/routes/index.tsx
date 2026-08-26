@@ -303,6 +303,12 @@ function Package() {
         <h3 className="mt-2 font-display text-2xl text-foreground sm:text-[1.8rem]">
           {COPY.package.mainTitle}
         </h3>
+        <img
+          src={capaAsset.url}
+          alt="150 Separadores Católicos para Imprimir — muestras con la Virgen, Jesús y santos sobre una Biblia abierta"
+          className="mx-auto mt-4 w-full max-w-[420px] rounded-xl border border-border shadow-[var(--shadow-soft)]"
+          loading="lazy"
+        />
         <p className="mt-3 text-[0.94rem] leading-relaxed text-muted-foreground">
           {COPY.package.mainText}
         </p>
