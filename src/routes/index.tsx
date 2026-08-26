@@ -10,6 +10,7 @@ import { COPY } from "@/data/copy";
 import { CHECKOUT, PRICING } from "@/data/offer";
 import { CtaButton } from "@/components/CtaButton";
 import { TopBar } from "@/components/TopBar";
+import comoUsarAsset from "@/assets/como-usar.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -186,21 +187,12 @@ function Testimonials() {
 function HowTo() {
   return (
     <Section id="como-usar" className="bg-cream">
-      <Title>{COPY.howTo.title}</Title>
-      <Lead>{COPY.howTo.lead}</Lead>
-
-      <ol className="mt-9 grid gap-4 sm:grid-cols-3">
-        {COPY.howTo.steps.map((s, i) => (
-          <li key={s.title} className="card-soft relative p-6 text-center">
-            <span className="absolute right-4 top-3 font-price text-[2.4rem] leading-none text-primary/10">
-              {i + 1}
-            </span>
-            <span className="text-[2.2rem] leading-none">{s.emoji}</span>
-            <h3 className="mt-3 font-display text-xl text-foreground">{s.title}</h3>
-            <p className="mt-2 text-[0.88rem] leading-relaxed text-muted-foreground">{s.text}</p>
-          </li>
-        ))}
-      </ol>
+      <img
+        src={comoUsarAsset.url}
+        alt="3 pasos simples para usar tus separadores católicos: imprime, recorta y utiliza"
+        className="mx-auto w-full max-w-[560px] rounded-[18px] border border-border shadow-[var(--shadow-soft)]"
+        loading="lazy"
+      />
     </Section>
   );
 }
