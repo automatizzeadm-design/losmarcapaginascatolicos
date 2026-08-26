@@ -474,7 +474,14 @@ function Offers() {
 
           <h3 className="mt-3 font-display text-2xl text-foreground">{COPY.offers.full.title}</h3>
 
-          <p className="mt-4 text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-gold">
+          <div className="animate-soft-pulse mt-4">
+            <img
+              src={bundleMockupAsset.url}
+              alt="Paquete Completo: 150 separadores católicos más 4 bonos en un mockup con encuadernador y tarjetas"
+              className="mx-auto w-full max-w-[440px] rounded-xl border border-gold/40 shadow-[var(--shadow-lift)]"
+              loading="lazy"
+            />
+          </div>
             {COPY.offers.full.premiumLabel}
           </p>
           <div className="mt-2 grid gap-2 sm:grid-cols-2">
