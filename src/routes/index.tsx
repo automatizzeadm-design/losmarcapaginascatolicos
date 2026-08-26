@@ -355,14 +355,17 @@ function Bonuses() {
             )}
             <h3 className="mt-2 font-display text-xl leading-snug text-foreground">{b.title}</h3>
 
-            {BONUS_IMAGES[b.title] && (
-              <img
-                src={BONUS_IMAGES[b.title].src}
-                alt={BONUS_IMAGES[b.title].alt}
-                className="mt-3 w-full rounded-xl border border-border shadow-[var(--shadow-soft)]"
-                loading="lazy"
-              />
-            )}
+            {(() => {
+              const img = BONUS_IMAGES[b.title];
+              return img ? (
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="mt-3 w-full rounded-xl border border-border shadow-[var(--shadow-soft)]"
+                  loading="lazy"
+                />
+              ) : null;
+            })()}
 
             <p className="mt-2 flex-1 text-[0.88rem] leading-relaxed text-muted-foreground">
               {b.text}
