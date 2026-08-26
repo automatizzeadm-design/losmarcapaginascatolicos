@@ -12,6 +12,32 @@ import { CtaButton } from "@/components/CtaButton";
 import { TopBar } from "@/components/TopBar";
 import { GuaranteeSeal } from "@/components/GuaranteeSeal";
 import comoUsarAsset from "@/assets/como-usar.png.asset.json";
+import bonusImpresionAsset from "@/assets/bonus-impresion-es.webp.asset.json";
+import bonusNinosAsset from "@/assets/bonus-ninos-es.webp.asset.json";
+import bonusSalmosAsset from "@/assets/bonus-salmos-es.webp.asset.json";
+import bonusPlaylistAsset from "@/assets/bonus-playlist-es.webp.asset.json";
+import capaAsset from "@/assets/capa-es.webp.asset.json";
+import bundleMockupAsset from "@/assets/bundle-mockup-es.webp.asset.json";
+
+/* Imagen de cada bono, mapeada por título. */
+const BONUS_IMAGES: Record<string, { src: string; alt: string }> = {
+  "Guía de Impresión Perfecta": {
+    src: bonusImpresionAsset.url,
+    alt: "Guía de Impresión Perfecta: papel recomendado, gramaje ideal, plastificado, recorte y cuidados",
+  },
+  "16 Separadores Infantiles — Historias Bíblicas": {
+    src: bonusNinosAsset.url,
+    alt: "16 separadores infantiles con historias bíblicas: el Arca de Noé, Jesús y los niños, el Buen Pastor y más",
+  },
+  "Los 150 Salmos Explicados Versículo por Versículo": {
+    src: bonusSalmosAsset.url,
+    alt: "150 Salmos Explicados: guía versículo por versículo con el rey David y la Biblia",
+  },
+  "Playlist con +100 Canciones Marianas y Católicas": {
+    src: bonusPlaylistAsset.url,
+    alt: "Playlist con más de 100 canciones marianas y católicas para rezar y meditar",
+  },
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -277,6 +303,12 @@ function Package() {
         <h3 className="mt-2 font-display text-2xl text-foreground sm:text-[1.8rem]">
           {COPY.package.mainTitle}
         </h3>
+        <img
+          src={capaAsset.url}
+          alt="150 Separadores Católicos para Imprimir — muestras con la Virgen, Jesús y santos sobre una Biblia abierta"
+          className="mx-auto mt-4 w-full max-w-[420px] rounded-xl border border-border shadow-[var(--shadow-soft)]"
+          loading="lazy"
+        />
         <p className="mt-3 text-[0.94rem] leading-relaxed text-muted-foreground">
           {COPY.package.mainText}
         </p>
@@ -322,6 +354,19 @@ function Bonuses() {
               </p>
             )}
             <h3 className="mt-2 font-display text-xl leading-snug text-foreground">{b.title}</h3>
+
+            {(() => {
+              const img = BONUS_IMAGES[b.title];
+              return img ? (
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="mt-3 w-full rounded-xl border border-border shadow-[var(--shadow-soft)]"
+                  loading="lazy"
+                />
+              ) : null;
+            })()}
+
             <p className="mt-2 flex-1 text-[0.88rem] leading-relaxed text-muted-foreground">
               {b.text}
             </p>
@@ -431,6 +476,15 @@ function Offers() {
           </p>
 
           <h3 className="mt-3 font-display text-2xl text-foreground">{COPY.offers.full.title}</h3>
+
+          <div className="animate-soft-pulse mt-4">
+            <img
+              src={bundleMockupAsset.url}
+              alt="Paquete Completo: 150 separadores católicos más 4 bonos en un mockup con encuadernador y tarjetas"
+              className="mx-auto w-full max-w-[440px] rounded-xl border border-gold/40 shadow-[var(--shadow-lift)]"
+              loading="lazy"
+            />
+          </div>
 
           <p className="mt-4 text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-gold">
             {COPY.offers.full.premiumLabel}
