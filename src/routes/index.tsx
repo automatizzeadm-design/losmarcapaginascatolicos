@@ -12,6 +12,32 @@ import { CtaButton } from "@/components/CtaButton";
 import { TopBar } from "@/components/TopBar";
 import { GuaranteeSeal } from "@/components/GuaranteeSeal";
 import comoUsarAsset from "@/assets/como-usar.png.asset.json";
+import bonusImpresionAsset from "@/assets/bonus-impresion-es.webp.asset.json";
+import bonusNinosAsset from "@/assets/bonus-ninos-es.webp.asset.json";
+import bonusSalmosAsset from "@/assets/bonus-salmos-es.webp.asset.json";
+import bonusPlaylistAsset from "@/assets/bonus-playlist-es.webp.asset.json";
+import capaAsset from "@/assets/capa-es.webp.asset.json";
+import bundleMockupAsset from "@/assets/bundle-mockup-es.webp.asset.json";
+
+/* Imagen de cada bono, mapeada por título. */
+const BONUS_IMAGES: Record<string, { src: string; alt: string }> = {
+  "Guía de Impresión Perfecta": {
+    src: bonusImpresionAsset.url,
+    alt: "Guía de Impresión Perfecta: papel recomendado, gramaje ideal, plastificado, recorte y cuidados",
+  },
+  "16 Separadores Infantiles — Historias Bíblicas": {
+    src: bonusNinosAsset.url,
+    alt: "16 separadores infantiles con historias bíblicas: el Arca de Noé, Jesús y los niños, el Buen Pastor y más",
+  },
+  "Los 150 Salmos Explicados Versículo por Versículo": {
+    src: bonusSalmosAsset.url,
+    alt: "150 Salmos Explicados: guía versículo por versículo con el rey David y la Biblia",
+  },
+  "Playlist con +100 Canciones Marianas y Católicas": {
+    src: bonusPlaylistAsset.url,
+    alt: "Playlist con más de 100 canciones marianas y católicas para rezar y meditar",
+  },
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
