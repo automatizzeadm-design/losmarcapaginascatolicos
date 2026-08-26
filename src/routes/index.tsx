@@ -453,9 +453,9 @@ function Offers() {
             ))}
             <li className="flex items-start gap-2.5 text-[0.9rem] font-medium text-primary">
               <span className="mt-0.5 shrink-0" aria-hidden>
-                ♾️
+                🗓️
               </span>
-              {COPY.offers.full.lifetime}
+              {COPY.offers.full.access}
             </li>
           </ul>
 

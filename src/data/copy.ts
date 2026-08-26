@@ -173,7 +173,7 @@ export const COPY = {
       "Tamaño 5 x 15 cm, ideal para Biblia y libros",
       "Guadalupe, Jesús, santos, ángeles, versículos y más",
       "Archivo digital: te llega al correo al instante",
-      "Imprímelos las veces que quieras, para siempre",
+      "Imprímelos las veces que quieras mientras tengas tu acceso activo",
     ],
   },
 
@@ -273,7 +273,10 @@ export const COPY = {
         "🎁 Bono 3 — Los 150 Salmos Explicados (+700 págs)",
         "🎁 Bono 4 — Playlist con +100 canciones marianas",
       ],
-      lifetime: "Acceso de por vida",
+      /* O acesso vitalício saiu daqui de propósito: vai ser vendido
+         como upsell depois da compra. Não voltar a prometer "para siempre"
+         em lugar nenhum da página. */
+      access: "Acceso por 12 meses",
       cta: "QUIERO EL PAQUETE COMPLETO",
       ctaSub: "Pago 100% seguro",
       upsellNote: "Solo $31 MXN más por 16 separadores extra y 3 bonos exclusivos",
@@ -313,7 +316,7 @@ export const COPY = {
       },
       {
         q: "¿Puedo imprimirlos varias veces? ¿Y para regalar?",
-        a: "Claro que sí. El archivo es tuyo: imprímelo cuantas veces quieras, para ti, para tu familia, para tu grupo de oración o para repartir en tu parroquia. Lo único que no se permite es revenderlo como si fuera tuyo.",
+        a: "Claro que sí. Mientras tu acceso esté activo puedes descargar e imprimir cuantas veces quieras: para ti, para tu familia, para tu grupo de oración o para repartir en tu parroquia. Lo único que no se permite es revenderlo como si fuera tuyo. Nuestra recomendación es que guardes el archivo en tu celular o en tu computadora en cuanto lo descargues.",
       },
       {
         q: "¿Funciona desde el celular? ¿Necesito computadora?",
