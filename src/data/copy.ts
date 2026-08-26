@@ -173,7 +173,7 @@ export const COPY = {
       "Tamaño 5 x 15 cm, ideal para Biblia y libros",
       "Guadalupe, Jesús, santos, ángeles, versículos y más",
       "Archivo digital: te llega al correo al instante",
-      "Imprímelos las veces que quieras mientras tengas tu acceso activo",
+      "Imprímelos las veces que quieras",
     ],
   },
 
@@ -236,7 +236,7 @@ export const COPY = {
       includes: [
         "150 separadores premium listos para imprimir",
         "Tamaño 5 x 15 cm, ideal para Biblia y libros",
-        "Archivo digital con acceso por 6 meses",
+        "Archivo digital con acceso inmediato",
       ],
       excludes: [
         "Bono 1 — Guía de Impresión Perfecta",
@@ -273,10 +273,6 @@ export const COPY = {
         "🎁 Bono 3 — Los 150 Salmos Explicados (+700 págs)",
         "🎁 Bono 4 — Playlist con +100 canciones marianas",
       ],
-      /* O acesso vitalício saiu daqui de propósito: vai ser vendido
-         como upsell depois da compra. Não voltar a prometer "para siempre"
-         em lugar nenhum da página. */
-      access: "Acceso por 12 meses",
       cta: "QUIERO EL PAQUETE COMPLETO",
       ctaSub: "Pago 100% seguro",
       upsellNote: "Solo $31 MXN más por 16 separadores extra y 3 bonos exclusivos",
@@ -294,8 +290,21 @@ export const COPY = {
   /* ---------------- GARANTÍA ---------------- */
   guarantee: {
     badge: "Garantía Total",
-    title: "Garantía incondicional de 7 días",
-    text: "Si en los próximos 7 días sientes que el material no era para ti, nada más mándanos un correo y te devolvemos el 100% de tu dinero. Sin preguntas y sin trámites.",
+    title: "Garantía incondicional de 30 días",
+    lead: "El riesgo lo cargamos nosotros. Tú no arriesgas ni un peso.",
+    text: "Descarga el material, imprímelo, tenlo un mes completo en tus manos. Si en cualquier momento de esos 30 días sientes que no era para ti, nada más nos mandas un correo y te devolvemos el 100% de tu dinero.",
+    highlight: "Sin preguntas, sin trámites y sin letras chiquitas.",
+    points: [
+      { emoji: "📅", title: "30 días completos", text: "Un mes entero para probarlo con calma." },
+      { emoji: "💸", title: "Devolución total", text: "Te regresamos el 100%, hasta el último peso." },
+      { emoji: "🤝", title: "Sin explicaciones", text: "No te pedimos motivos ni te ponemos trabas." },
+    ],
+    seal: {
+      top: "GARANTÍA",
+      number: "30",
+      unit: "DÍAS",
+      bottom: "DEVOLUCIÓN TOTAL",
+    },
   },
 
   /* ---------------- FAQ ---------------- */
@@ -324,7 +333,7 @@ export const COPY = {
       },
       {
         q: "¿Y si no me gusta?",
-        a: "Tienes 7 días de garantía incondicional. Nos escribes un correo y te devolvemos cada peso, sin preguntas y sin mala cara. El riesgo lo cargamos nosotros.",
+        a: "Tienes 30 días de garantía incondicional. Nos escribes un correo y te devolvemos cada peso, sin preguntas y sin mala cara. El riesgo lo cargamos nosotros.",
       },
       {
         q: "¿El contenido es fiel al Magisterio de la Iglesia?",
@@ -336,7 +345,7 @@ export const COPY = {
   /* ---------------- CIERRE ---------------- */
   finalCta: {
     title: "Empieza hoy a marcar tu fe con belleza y devoción",
-    text: "Acceso inmediato. Garantía de 7 días. 150 separadores premium en tu Biblia desde hoy mismo.",
+    text: "Acceso inmediato. Garantía de 30 días. 150 separadores premium en tu Biblia desde hoy mismo.",
     cta: "QUIERO MIS SEPARADORES",
   },
 

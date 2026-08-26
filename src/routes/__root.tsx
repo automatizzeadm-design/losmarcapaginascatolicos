@@ -93,7 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Guadalupe, Jesús, santos, ángeles y versículos. Acceso inmediato y garantía de 7 días.",
+          "Guadalupe, Jesús, santos, ángeles y versículos. Acceso inmediato y garantía de 30 días.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "es_MX" },

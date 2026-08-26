@@ -10,6 +10,7 @@ import { COPY } from "@/data/copy";
 import { CHECKOUT, PRICING } from "@/data/offer";
 import { CtaButton } from "@/components/CtaButton";
 import { TopBar } from "@/components/TopBar";
+import { GuaranteeSeal } from "@/components/GuaranteeSeal";
 import comoUsarAsset from "@/assets/como-usar.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -247,8 +248,12 @@ function Categories() {
         </p>
       </div>
 
-      <p className="mt-6 text-center font-display text-xl text-foreground">
-        {COPY.categories.total}
+      {/* Fecho da contagem — é o número que prova a promessa do título,
+          então ganha faixa própria em vez de virar mais uma linha de texto */}
+      <p className="mt-7 text-center">
+        <span className="inline-block rounded-2xl border-2 border-gold bg-[image:var(--gradient-gold)] px-6 py-4 text-[1.05rem] font-bold leading-snug text-primary-foreground shadow-[var(--shadow-lift)] sm:text-[1.25rem]">
+          {COPY.categories.total}
+        </span>
       </p>
     </Section>
   );
@@ -451,12 +456,6 @@ function Offers() {
                 {i}
               </li>
             ))}
-            <li className="flex items-start gap-2.5 text-[0.9rem] font-medium text-primary">
-              <span className="mt-0.5 shrink-0" aria-hidden>
-                🗓️
-              </span>
-              {COPY.offers.full.access}
-            </li>
           </ul>
 
           <div className="mt-6">
@@ -515,19 +514,50 @@ function Payment() {
 function Guarantee() {
   return (
     <Section id="garantia">
-      <div className="card-soft mx-auto max-w-[46rem] border-success/40 p-7 text-center">
-        <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-success/10 text-[2rem]">
-          🛡️
-        </span>
-        <p className="mt-3 text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-success">
-          {COPY.guarantee.badge}
-        </p>
-        <h2 className="mt-1 font-display text-2xl text-foreground sm:text-[1.9rem]">
-          {COPY.guarantee.title}
-        </h2>
-        <p className="mx-auto mt-3 max-w-[38rem] text-[0.94rem] leading-relaxed text-muted-foreground">
-          {COPY.guarantee.text}
-        </p>
+      {/* Couro escuro + selo dourado: o bloco tem que parecer um certificado,
+          não mais um cartão da página. É o que tira o medo antes do preço. */}
+      <div className="relative mx-auto max-w-[52rem] overflow-hidden rounded-[24px] bg-[image:var(--gradient-brown)] p-7 text-center shadow-[var(--shadow-lift)] sm:p-10">
+        {/* moldura dupla, como borda de diploma */}
+        <span className="pointer-events-none absolute inset-3 rounded-[18px] border border-gold/45" />
+        <span className="pointer-events-none absolute inset-[18px] rounded-[13px] border border-gold/20" />
+        {/* brilho no topo, pra o marrom não ficar chapado */}
+        <span className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(70%_100%_at_50%_0%,oklch(0.82_0.13_85/0.16),transparent_70%)]" />
+
+        <div className="relative flex flex-col items-center gap-7 sm:flex-row sm:items-center sm:gap-9 sm:text-left">
+          <GuaranteeSeal
+            {...COPY.guarantee.seal}
+            className="h-36 w-36 shrink-0 text-brown-deep drop-shadow-[0_10px_24px_oklch(0.2_0.04_50/0.65)] sm:h-44 sm:w-44"
+          />
+
+          <div className="flex-1">
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-gold">
+              {COPY.guarantee.badge}
+            </p>
+            <h2 className="mt-2 font-display text-[1.65rem] leading-tight text-cream sm:text-[2.1rem]">
+              {COPY.guarantee.title}
+            </h2>
+            <p className="mt-2 font-display text-[1.05rem] italic text-gold/90">
+              {COPY.guarantee.lead}
+            </p>
+            <p className="mt-3 text-[0.94rem] leading-relaxed text-cream/75">
+              {COPY.guarantee.text}
+            </p>
+            <p className="mt-4 text-[1rem] font-semibold text-cream">
+              {COPY.guarantee.highlight}
+            </p>
+          </div>
+        </div>
+
+        {/* três pilares da garantia */}
+        <div className="relative mt-8 grid gap-3 border-t border-gold/25 pt-7 sm:grid-cols-3">
+          {COPY.guarantee.points.map((p) => (
+            <div key={p.title} className="rounded-2xl bg-cream/[0.07] px-4 py-4 text-center">
+              <span className="text-[1.6rem] leading-none">{p.emoji}</span>
+              <p className="mt-1.5 text-[0.92rem] font-semibold text-cream">{p.title}</p>
+              <p className="mt-1 text-[0.8rem] leading-relaxed text-cream/65">{p.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </Section>
   );
