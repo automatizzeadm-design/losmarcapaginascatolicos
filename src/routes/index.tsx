@@ -106,9 +106,6 @@ function Hero() {
       <div className="mx-auto w-full max-w-[980px] text-center">
         <div className="animate-rise-fade">
           <span className="pill">{COPY.hero.eyebrow}</span>
-          <p className="mt-3 text-[0.78rem] uppercase tracking-[0.2em] text-muted-foreground">
-            {COPY.hero.official}
-          </p>
         </div>
 
         <h1 className="animate-rise-fade mx-auto mt-6 max-w-[26ch] text-balance font-display text-[2rem] leading-[1.14] text-foreground sm:text-[2.9rem]">

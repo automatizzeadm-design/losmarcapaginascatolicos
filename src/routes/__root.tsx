@@ -85,7 +85,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "150 separadores católicos de 5 x 15 cm listos para imprimir en tamaño carta. Descarga inmediata. Paga con tarjeta, OXXO o SPEI.",
       },
-      { name: "author", content: "Editora GPR" },
       { name: "theme-color", content: "#f7f3ea" },
       {
         property: "og:title",

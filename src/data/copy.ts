@@ -15,8 +15,6 @@ export const COPY = {
 
   brand: {
     name: "Separadores Católicos",
-    publisher: "Editora GPR",
-    handle: "@editoragpr",
   },
 
   /* ---------------- BARRA DE URGÊNCIA ---------------- */
@@ -28,7 +26,6 @@ export const COPY = {
   /* ---------------- HERO ---------------- */
   hero: {
     eyebrow: "Colección Premium · 150 modelos exclusivos",
-    official: "Oficial @editoragpr",
     title: "150 Separadores Católicos listos para imprimir",
     lead: "Separadores premium de 5 x 15 cm con la Virgen de Guadalupe, Jesús, santos, ángeles y versículos. Perfectos para tu Biblia, tu misal, tus libros y tus devocionarios. El Paquete Completo incluye 16 separadores infantiles de regalo.",
     cta: "QUIERO MIS SEPARADORES",
@@ -341,7 +338,7 @@ export const COPY = {
   },
 
   footer: {
-    rights: "© 2026 Editora GPR. Todos los derechos reservados.",
+    rights: "© 2026 Separadores Católicos. Todos los derechos reservados.",
     disclaimer:
       "Este producto no está afiliado oficialmente a ninguna institución eclesiástica. Contenido inspirado en la tradición y la devoción de la Iglesia Católica.",
   },
