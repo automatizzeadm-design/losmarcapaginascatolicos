@@ -151,7 +151,7 @@ function Hero() {
           pausedText={COPY.hero.vsl.pausedText}
         />
 
-        <p className="animate-rise-fade mx-auto mt-8 max-w-[44rem] text-[1.02rem] leading-relaxed text-muted-foreground">
+        <p className="animate-rise-fade mx-auto mt-8 max-w-[42rem] text-[0.88rem] leading-relaxed text-muted-foreground sm:text-[0.95rem]">
           {COPY.hero.lead}
         </p>
 

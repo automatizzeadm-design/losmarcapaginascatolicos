@@ -89,9 +89,14 @@ export function VslPlayer({
 
       if (data.event === "play") setPlaying(true);
       if (data.event === "pause") setPlaying(false);
+      /* Rede de segurança: com loop=1 o Vimeo emenda sozinho e este evento
+         não costuma disparar. Se disparar (versão de player que ignora o
+         loop), rebobinamos na mão pra tela de recomendações não aparecer. */
       if (data.event === "ended") {
-        setPlaying(false);
         timeRef.current = 0;
+        post("setCurrentTime", 0);
+        post("play");
+        setPlaying(true);
       }
     };
 
@@ -131,11 +136,14 @@ export function VslPlayer({
   };
 
   /* Fixo por videoId: se essa string mudasse entre renders, o iframe
-     recarregaria e o vídeo voltaria pro começo. */
+     recarregaria e o vídeo voltaria pro começo.
+
+     `loop=1` existe pra matar a tela de recomendações do Vimeo: em loop o
+     vídeo emenda no início e a tela final nunca chega a aparecer. */
   const src = useMemo(
     () =>
       `${VIMEO_ORIGIN}/video/${videoId}` +
-      "?autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0&badge=0" +
+      "?autoplay=1&muted=1&loop=1&controls=0&title=0&byline=0&portrait=0&badge=0" +
       "&autopause=0&playsinline=1&dnt=1&transparent=0",
     [videoId],
   );
