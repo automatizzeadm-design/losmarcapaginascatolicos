@@ -11,6 +11,7 @@ import { CHECKOUT, PRICING } from "@/data/offer";
 import { CtaButton } from "@/components/CtaButton";
 import { TopBar } from "@/components/TopBar";
 import { GuaranteeSeal } from "@/components/GuaranteeSeal";
+import { VslPlayer } from "@/components/VslPlayer";
 import comoUsarAsset from "@/assets/como-usar.png.asset.json";
 import bonusImpresionAsset from "@/assets/bonus-impresion-es.webp.asset.json";
 import bonusNinosAsset from "@/assets/bonus-ninos-es.webp.asset.json";
@@ -141,7 +142,16 @@ function Hero() {
           <span className="text-gradient-gold">listos para imprimir</span>
         </h1>
 
-        <p className="animate-rise-fade mx-auto mt-6 max-w-[44rem] text-[1.02rem] leading-relaxed text-muted-foreground">
+        {/* VSL logo abaixo do título, antes de qualquer texto de apoio */}
+        <VslPlayer
+          className="animate-rise-fade mx-auto mt-8 max-w-[680px]"
+          videoId={COPY.hero.vsl.videoId}
+          unmutePrompt={COPY.hero.vsl.unmutePrompt}
+          pausedTitle={COPY.hero.vsl.pausedTitle}
+          pausedText={COPY.hero.vsl.pausedText}
+        />
+
+        <p className="animate-rise-fade mx-auto mt-8 max-w-[44rem] text-[1.02rem] leading-relaxed text-muted-foreground">
           {COPY.hero.lead}
         </p>
 
@@ -485,7 +495,10 @@ function Offers() {
           </ul>
 
           <div className="mt-6">
-            <p className="relative inline-block text-[0.95rem] text-muted-foreground">
+            <p className="text-[0.7rem] uppercase tracking-[0.14em] text-gold">
+              {COPY.offers.contributionLabel}
+            </p>
+            <p className="relative mt-1 inline-block text-[0.95rem] text-muted-foreground">
               Antes {PRICING.basic.from}
               <span
                 className="absolute inset-x-0 top-1/2 h-[1.5px] -rotate-3 bg-destructive/80"
@@ -548,7 +561,10 @@ function Offers() {
           </ul>
 
           <div className="mt-6">
-            <p className="relative inline-block text-[0.95rem] text-muted-foreground">
+            <p className="text-[0.7rem] uppercase tracking-[0.14em] text-gold">
+              {COPY.offers.contributionLabel}
+            </p>
+            <p className="relative mt-1 inline-block text-[0.95rem] text-muted-foreground">
               Antes {PRICING.full.from}
               <span
                 className="absolute inset-x-0 top-1/2 h-[1.5px] -rotate-3 bg-destructive/80"
@@ -570,6 +586,10 @@ function Offers() {
           </div>
         </div>
       </div>
+
+      <p className="mx-auto mt-5 max-w-[42rem] text-center text-[0.82rem] leading-relaxed text-muted-foreground">
+        {COPY.offers.contributionNote}
+      </p>
 
       {/* Empurrão pro pacote completo */}
       <div className="card-soft mx-auto mt-6 max-w-[46rem] border-gold/45 bg-accent/40 p-5 text-center">

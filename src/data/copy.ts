@@ -30,6 +30,15 @@ export const COPY = {
     lead: "Separadores premium de 5 x 15 cm con la Virgen de Guadalupe, Jesús, santos, ángeles y versículos. Perfectos para tu Biblia, tu misal, tus libros y tus devocionarios. El Paquete Completo incluye 16 separadores infantiles de regalo.",
     cta: "QUIERO MIS SEPARADORES",
     ctaSub: "Compra 100% segura · Acceso inmediato",
+    /* VSL logo abaixo do título. O vídeo começa mudo (é a única forma de
+       autoplay que o navegador deixa passar) e a camada convida a ligar o som. */
+    vsl: {
+      videoId: "1221968600",
+      unmutePrompt: "El video ya empezó — toca para activar el sonido",
+      pausedTitle: "Pausaste el video",
+      pausedText:
+        "Todavía falta la parte más importante. Toca aquí para seguir justo donde te quedaste.",
+    },
     badges: [
       "Descarga inmediata",
       "Imprime las veces que quieras",
@@ -230,6 +239,11 @@ export const COPY = {
   offers: {
     title: "Elige tu paquete",
     lead: "Los dos te dan acceso inmediato. El Paquete Completo es el que se lleva 95 de cada 100 personas.",
+    /* No México, "la Obra de María" se entiende por la Guadalupana:
+       es el nombre con el que la gente la nombra todos los días. */
+    contributionLabel: "Tu aportación a la Obra Guadalupana",
+    contributionNote:
+      "Lo que aportas sostiene la Obra Guadalupana y hace posible que este material siga llegando a más hogares.",
     basic: {
       label: "Paquete Básico",
       title: "150 Separadores Católicos",
