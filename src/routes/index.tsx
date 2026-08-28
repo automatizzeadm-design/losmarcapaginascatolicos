@@ -19,6 +19,7 @@ import bonusSalmosAsset from "@/assets/bonus-salmos-es.webp.asset.json";
 import bonusPlaylistAsset from "@/assets/bonus-playlist-es.webp.asset.json";
 import capaAsset from "@/assets/capa-es.webp.asset.json";
 import bundleMockupAsset from "@/assets/bundle-mockup-es.webp.asset.json";
+import testimoniosAsset from "@/assets/testimonios-es.png.asset.json";
 
 /* Imagen de cada bono, mapeada por título. */
 const BONUS_IMAGES: Record<string, { src: string; alt: string }> = {
@@ -181,6 +182,12 @@ function Hero() {
 function Testimonials() {
   return (
     <Section id="testimonios">
+      <img
+        src={testimoniosAsset.url}
+        alt="Separadores católicos en uso: Biblia abierta con rosario y vela, mostrando seis modelos devocionales como el Salmo 23, Nuestra Señora de Aparecida, Jesús de la Divina Misericordia, Filipenses 4:13, San Miguel Arcángel y Santa Teresita"
+        className="mx-auto mb-8 w-full max-w-[640px] rounded-[18px] border border-border shadow-[var(--shadow-soft)]"
+        loading="lazy"
+      />
       <Title>{COPY.testimonials.title}</Title>
       <Lead>{COPY.testimonials.lead}</Lead>
 
