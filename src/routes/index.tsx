@@ -185,7 +185,7 @@ function Testimonials() {
       <img
         src={testimoniosAsset.url}
         alt="Separadores católicos en uso: Biblia abierta con rosario y vela, mostrando seis modelos devocionales como el Salmo 23, Nuestra Señora de Aparecida, Jesús de la Divina Misericordia, Filipenses 4:13, San Miguel Arcángel y Santa Teresita"
-        className="mx-auto mb-8 w-full max-w-[640px] rounded-[18px] border border-border shadow-[var(--shadow-soft)]"
+        className="mx-auto mb-8 w-full max-w-[640px]"
         loading="lazy"
       />
       <Title>{COPY.testimonials.title}</Title>
