@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -43,6 +43,12 @@ export function VslPlayer({
   const [ready, setReady] = useState(false);
   const [muted, setMuted] = useState(true);
   const [playing, setPlaying] = useState(true);
+  /**
+   * Último segundo conhecido do vídeo.
+   * Ao sair do mudo o player do Vimeo volta pro início — então guardamos a
+   * posição a cada tique e devolvemos ela logo depois de ligar o som.
+   */
+  const timeRef = useRef(0);
 
   const post = useCallback((method: string, value?: unknown) => {
     const win = frameRef.current?.contentWindow;
@@ -55,7 +61,7 @@ export function VslPlayer({
   useEffect(() => {
     const onMessage = (e: MessageEvent) => {
       if (e.origin !== VIMEO_ORIGIN) return;
-      let data: { event?: string; method?: string };
+      let data: { event?: string; method?: string; data?: { seconds?: number } };
       try {
         data = typeof e.data === "string" ? JSON.parse(e.data) : e.data;
       } catch {
@@ -67,11 +73,26 @@ export function VslPlayer({
         post("addEventListener", "play");
         post("addEventListener", "pause");
         post("addEventListener", "ended");
+        // Os dois nomes: "playProgress" é o antigo, "timeupdate" o atual.
+        // Registrar ambos garante que a posição seja rastreada em qualquer
+        // versão do player que o Vimeo sirva.
+        post("addEventListener", "playProgress");
+        post("addEventListener", "timeupdate");
         return;
       }
+
+      if (data.event === "playProgress" || data.event === "timeupdate") {
+        const seconds = data.data?.seconds;
+        if (typeof seconds === "number") timeRef.current = seconds;
+        return;
+      }
+
       if (data.event === "play") setPlaying(true);
       if (data.event === "pause") setPlaying(false);
-      if (data.event === "ended") setPlaying(false);
+      if (data.event === "ended") {
+        setPlaying(false);
+        timeRef.current = 0;
+      }
     };
 
     window.addEventListener("message", onMessage);
@@ -83,8 +104,18 @@ export function VslPlayer({
     if (!ready) return;
 
     if (muted) {
+      // Ligar o som faz o Vimeo rebobinar. Guardamos onde ela estava e
+      // devolvemos a posição logo em seguida, num tique pra dar tempo do
+      // player aplicar o volume antes do seek.
+      const resumeAt = timeRef.current;
       post("setVolume", 1);
       post("play");
+      if (resumeAt > 0.4) {
+        window.setTimeout(() => {
+          post("setCurrentTime", resumeAt);
+          post("play");
+        }, 120);
+      }
       setMuted(false);
       setPlaying(true);
       return;
@@ -99,10 +130,15 @@ export function VslPlayer({
     }
   };
 
-  const src =
-    `${VIMEO_ORIGIN}/video/${videoId}` +
-    "?autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0&badge=0" +
-    "&autopause=0&playsinline=1&dnt=1&transparent=0";
+  /* Fixo por videoId: se essa string mudasse entre renders, o iframe
+     recarregaria e o vídeo voltaria pro começo. */
+  const src = useMemo(
+    () =>
+      `${VIMEO_ORIGIN}/video/${videoId}` +
+      "?autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0&badge=0" +
+      "&autopause=0&playsinline=1&dnt=1&transparent=0",
+    [videoId],
+  );
 
   return (
     <div className={cn("relative overflow-hidden rounded-2xl bg-black shadow-[var(--shadow-lift)]", className)}>
