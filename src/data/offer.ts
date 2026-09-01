@@ -13,14 +13,16 @@ export const PRICING = {
   currency: "MXN",
 
   basic: {
-    /** Preço de ancoragem, riscado */
-    from: "$179 MXN",
+    /** Preço de ancoragem, riscado. Fica abaixo do normal do pacote completo
+        ($174): o básico entrega menos, então não pode custar mais. */
+    from: "$119 MXN",
     /** O que ela paga */
     price: "$69 MXN",
   },
 
   full: {
-    from: "$449 MXN",
+    /** Preço normal do produto, riscado na página */
+    from: "$174 MXN",
     price: "$100 MXN",
   },
 
