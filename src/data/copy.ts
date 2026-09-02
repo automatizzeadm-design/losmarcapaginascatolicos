@@ -1,3 +1,6 @@
+import depoimentoMulherBibliaAsset from "@/assets/depoimento-mulher-biblia.png.asset.json";
+import depoimentoAparecidaAsset from "@/assets/depoimento-aparecida.png.asset.json";
+
 /**
  * TODO O TEXTO DA PÁGINA EM UM ÚNICO ARQUIVO.
  * Espanhol do MÉXICO (não neutro): "separadores" em vez de "marcapáginas",
@@ -97,6 +100,28 @@ export const COPY = {
         name: "Rafael Lima",
         city: "Salvador, Brasil",
         text: "Los imprimí, los enmiqué y se los regalé a mis padrinos de boda. Quedaron conmovidos. Material precioso y baratísimo para todo lo que trae.",
+      },
+      {
+        initials: "CR",
+        nota: 4.9,
+        name: "Clara Ribeiro",
+        city: "São Paulo, Brasil",
+        text: "Quedé encantada con la calidad. Los imprimí en papel fotográfico y ahora llevo uno con el Sagrado Corazón en cada libro de oración.",
+        imagem: {
+          src: depoimentoMulherBibliaAsset.url,
+          alt: "Cliente mostrando sus separadores del Sagrado Corazón junto a su Biblia",
+        },
+      },
+      {
+        initials: "MR",
+        nota: 5,
+        name: "Marta Regina",
+        city: "Rio de Janeiro, Brasil",
+        text: "Mi separador favorito es el de Nuestra Señora Aparecida. Quedó hermosísimo y resistente, perfecto para mi Biblia de todos los días.",
+        imagem: {
+          src: depoimentoAparecidaAsset.url,
+          alt: "Separador de Nuestra Señora Aparecida junto a la Biblia Sagrada",
+        },
       },
     ],
   },
