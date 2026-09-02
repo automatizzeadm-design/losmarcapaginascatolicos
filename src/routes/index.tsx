@@ -295,6 +295,17 @@ function Categories() {
           {COPY.categories.total}
         </span>
       </p>
+
+      {/* Exclusividade: vem logo depois de ela ver os 150 modelos listados,
+          que é o momento em que passa pela cabeça "isso deve ter em qualquer lugar" */}
+      <div className="card-soft mx-auto mt-6 max-w-[46rem] border-gold/40 p-6 text-center">
+        <h3 className="font-display text-[1.25rem] text-foreground sm:text-[1.4rem]">
+          {COPY.categories.exclusividad.titulo}
+        </h3>
+        <p className="mx-auto mt-2.5 max-w-[42rem] text-[0.92rem] leading-relaxed text-muted-foreground">
+          {COPY.categories.exclusividad.texto}
+        </p>
+      </div>
     </Section>
   );
 }
@@ -581,12 +592,43 @@ function Offers() {
             <p className="text-[0.7rem] uppercase tracking-[0.14em] text-gold">
               {COPY.offers.contributionLabel}
             </p>
-            <p className="relative mt-1 inline-block text-[0.95rem] text-muted-foreground">
-              Antes {PRICING.full.from}
-              <span
-                className="absolute inset-x-0 top-1/2 h-[1.5px] -rotate-3 bg-destructive/80"
-                aria-hidden
-              />
+            {/* Empilhamento de valor. Somar item a item faz o mesmo preço ser
+                lido como 80% de desconto — um "antes" solto ninguém acredita. */}
+            <div className="mt-3 rounded-xl border border-border bg-background/60 p-4 text-left">
+              <p className="text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                {COPY.offers.full.stackLabel}
+              </p>
+
+              <ul className="mt-2.5 grid gap-1.5">
+                {PRICING.valueStack.map((linha) => (
+                  <li
+                    key={linha.item}
+                    className="flex items-baseline justify-between gap-3 text-[0.82rem]"
+                  >
+                    <span className="text-foreground/85">{linha.item}</span>
+                    <span className="shrink-0 font-price tabular-nums text-muted-foreground">
+                      {linha.valor}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-3 flex items-baseline justify-between gap-3 border-t border-border pt-2.5">
+                <span className="text-[0.84rem] font-semibold text-foreground">
+                  {COPY.offers.full.stackTotalLabel}
+                </span>
+                <span className="relative shrink-0 font-price text-[1.05rem] font-bold tabular-nums text-muted-foreground">
+                  {PRICING.valueTotal}
+                  <span
+                    className="absolute inset-x-0 top-1/2 h-[1.5px] -rotate-3 bg-destructive/80"
+                    aria-hidden
+                  />
+                </span>
+              </div>
+            </div>
+
+            <p className="mt-4 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+              {COPY.offers.full.stackTodayLabel}
             </p>
             <p className="font-price text-[3rem] font-bold leading-none tracking-tight text-success">
               {PRICING.full.price}

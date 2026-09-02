@@ -43,6 +43,25 @@ export const PRICING = {
 
   /** Valor de ancoragem de cada bônus premium */
   bonusAnchor: "$259 MXN",
+
+  /**
+   * Empilhamento de valor do pacote completo.
+   *
+   * Um "de $350" solto é um número que ninguém acredita. Somando item a item,
+   * o mesmo preço de hoje passa a ser lido como 80% de desconto em vez de 50%,
+   * e cada linha reancora um bônus que ela já viu na página.
+   *
+   * Os valores dos bônus 3 e 4 são os mesmos do bonusAnchor exibido nos cards
+   * — se mexer num, mexa no outro, ou a página se contradiz.
+   */
+  valueStack: [
+    { item: "150 Separadores Católicos", valor: "$174 MXN" },
+    { item: "Bono 1 — Guía de Impresión Perfecta", valor: "$97 MXN" },
+    { item: "Bono 2 — 16 Separadores Infantiles", valor: "$97 MXN" },
+    { item: "Bono 3 — Los 150 Salmos Explicados", valor: "$259 MXN" },
+    { item: "Bono 4 — Playlist con +100 Canciones", valor: "$259 MXN" },
+  ],
+  valueTotal: "$886 MXN",
 } as const;
 
 /**

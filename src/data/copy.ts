@@ -169,6 +169,14 @@ export const COPY = {
       { name: "Minimalista Premium", count: 4, emoji: "✨" },
     ],
     total: "TOTAL: 150 separadores — listos para imprimir, recortar y usar.",
+    /* Responde à objeção "isso deve ter em qualquer lugar" sem nomear onde —
+       o público é mais velho e a comparação com sites de imagem não diria nada
+       a ele. O argumento é exclusividade, e fecha no uso real: presentear. */
+    exclusividad: {
+      titulo: "Ilustraciones exclusivas de esta colección",
+      texto:
+        "Cada uno de los 150 separadores fue ilustrado especialmente para esta colección. No se venden por separado, no están en ninguna tienda y no los vas a encontrar en ningún otro lado. Cuando los imprimas y los regales, nadie más va a tener unos iguales.",
+    },
     /* Devoções que o público mexicano procura por nome. Genérico não vende aqui. */
     highlight:
       "Con la Guadalupana en el lugar que le toca, y también San Judas Tadeo, San Charbel, el Santo Niño de Atocha, la Virgen de San Juan de los Lagos y la Virgen de Zapopan.",
@@ -318,6 +326,10 @@ export const COPY = {
         "🎁 Bono 3 — Los 150 Salmos Explicados (+700 págs)",
         "🎁 Bono 4 — Playlist con +100 canciones marianas",
       ],
+      /* Empilhamento de valor — os itens vêm de PRICING.valueStack */
+      stackLabel: "Lo que te llevas, valor por valor",
+      stackTotalLabel: "Valor total de todo",
+      stackTodayLabel: "Hoy pagas solo",
       cta: "QUIERO EL PAQUETE COMPLETO",
       ctaSub: "Pago 100% seguro",
       upsellNote: "Solo {delta} más por 16 separadores extra y 3 bonos exclusivos",
@@ -359,6 +371,10 @@ export const COPY = {
       {
         q: "¿Cómo voy a recibir los separadores?",
         a: "En cuanto se confirma tu pago te llega el acceso a tu correo. El material es 100% digital (PDF), listo para descargar e imprimir las veces que quieras, en cualquier impresora. Si pagas con tarjeta o SPEI la confirmación es inmediata; con OXXO puede tardar unas horas en reflejarse.",
+      },
+      {
+        q: "¿Por qué cuesta tan poco?",
+        a: "Porque es material digital: no hay impresión, ni envío, ni bodega, ni intermediario que encarezca el camino. Y porque el precio no está puesto para ganar con el material — es una aportación a la Obra, pensada para que estos separadores lleguen a la mayor cantidad de hogares posible. Preferimos que estén en muchas Biblias a que sean caros y estén en pocas.",
       },
       {
         q: "¿De qué tamaño es cada separador?",
