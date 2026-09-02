@@ -14,6 +14,12 @@ type CtaButtonProps = {
   /** Variante azul mariana, usada no pacote básico */
   variant?: "gold" | "outline";
   className?: string;
+  /**
+   * Intercepta o clique antes de navegar. Usado pelo pacote básico, que abre
+   * o pop-up de resgate em vez de ir direto pro checkout.
+   * Chame preventDefault() dentro para segurar a navegação.
+   */
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
 export function CtaButton({
@@ -22,6 +28,7 @@ export function CtaButton({
   sublabel,
   variant = "gold",
   className,
+  onClick,
 }: CtaButtonProps) {
   const isGold = variant === "gold";
 
@@ -29,6 +36,7 @@ export function CtaButton({
     <span className="block">
       <a
         href={href}
+        onClick={onClick}
         className={cn(
           "group/cta relative block overflow-hidden rounded-[16px] px-6 py-4 text-center",
           "font-sans text-[0.95rem] font-semibold tracking-wide",

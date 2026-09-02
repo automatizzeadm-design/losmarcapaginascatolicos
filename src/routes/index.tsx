@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 
 import {
   Accordion,
@@ -12,6 +13,7 @@ import { CtaButton } from "@/components/CtaButton";
 import { TopBar } from "@/components/TopBar";
 import { GuaranteeSeal } from "@/components/GuaranteeSeal";
 import { VslPlayer } from "@/components/VslPlayer";
+import { OfertaRescate } from "@/components/OfertaRescate";
 import comoUsarAsset from "@/assets/como-usar.png.asset.json";
 import bonusImpresionAsset from "@/assets/bonus-impresion-es.webp.asset.json";
 import bonusNinosAsset from "@/assets/bonus-ninos-es.webp.asset.json";
@@ -464,8 +466,12 @@ function Bonuses() {
 /* ---------------- OFERTAS ---------------- */
 
 function Offers() {
+  const [resgateAberto, setResgateAberto] = useState(false);
+
   return (
     <Section id="ofertas">
+      <OfertaRescate aberto={resgateAberto} onFechar={() => setResgateAberto(false)} />
+
       <Title>{COPY.offers.title}</Title>
       <Lead>{COPY.offers.lead}</Lead>
 
@@ -518,7 +524,16 @@ function Offers() {
           </div>
 
           <div className="mt-5">
-            <CtaButton href={CHECKOUT.basic} variant="outline">
+            {/* Segura a navegação e abre o resgate: ela já quis comprar,
+                só escolheu a versão menor. */}
+            <CtaButton
+              href={CHECKOUT.basic}
+              variant="outline"
+              onClick={(e) => {
+                e.preventDefault();
+                setResgateAberto(true);
+              }}
+            >
               {COPY.offers.basic.cta}
             </CtaButton>
           </div>
@@ -582,7 +597,7 @@ function Offers() {
               {PRICING.full.price}
             </p>
             <p className="mt-1.5 text-[0.78rem] text-muted-foreground">
-              {COPY.offers.full.upsellNote}
+              {COPY.offers.full.upsellNote.replace("{delta}", PRICING.upgradeDelta)}
             </p>
           </div>
 
@@ -604,7 +619,7 @@ function Offers() {
           ⚠️ {COPY.offers.nudge.warning}
         </p>
         <p className="mt-1.5 text-[0.88rem] leading-relaxed text-muted-foreground">
-          {COPY.offers.nudge.text}
+          {COPY.offers.nudge.text.replace("{delta}", PRICING.upgradeDelta)}
         </p>
       </div>
     </Section>

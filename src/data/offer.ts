@@ -13,21 +13,33 @@ export const PRICING = {
   currency: "MXN",
 
   basic: {
-    /** Preço de ancoragem, riscado. Fica abaixo do normal do pacote completo
-        ($174): o básico entrega menos, então não pode custar mais. */
-    from: "$119 MXN",
+    /** Preço normal, riscado */
+    from: "$175 MXN",
     /** O que ela paga */
-    price: "$69 MXN",
-  },
-
-  full: {
-    /** Preço normal do produto, riscado na página */
-    from: "$174 MXN",
     price: "$100 MXN",
   },
 
-  /** Diferença entre os dois, citada no empurrão pro pacote completo */
-  upgradeDelta: "$31 MXN",
+  full: {
+    /** Preço normal, riscado */
+    from: "$350 MXN",
+    price: "$174 MXN",
+  },
+
+  /**
+   * Oferta de resgate: aparece no pop-up quando ela clica no pacote básico.
+   * É o pacote completo com desconto — a distância pro básico cai de $74
+   * para $30, que é o que faz o upgrade parecer óbvio na hora da hesitação.
+   */
+  rescue: {
+    price: "$130 MXN",
+    /** Quanto a mais que o básico */
+    deltaVsBasic: "$30 MXN",
+    /** Quanto ela economiza em relação ao completo cheio */
+    economia: "$44 MXN",
+  },
+
+  /** Diferença entre básico e completo, citada no empurrão pro completo */
+  upgradeDelta: "$74 MXN",
 
   /** Valor de ancoragem de cada bônus premium */
   bonusAnchor: "$259 MXN",

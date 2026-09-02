@@ -262,7 +262,32 @@ export const COPY = {
     },
     nudge: {
       warning: "Todavía estás a tiempo de llevarte la mejor opción",
-      text: "95 de cada 100 personas eligen el Paquete Completo: los 4 bonos por solo $31 MXN más.",
+      /* {delta} vem de PRICING.upgradeDelta — nunca escrever o valor à mão aqui */
+      text: "95 de cada 100 personas eligen el Paquete Completo: los 4 bonos por solo {delta} más.",
+    },
+
+    /**
+     * Pop-up de resgate: dispara quando ela clica no pacote básico.
+     * Ela já decidiu comprar — só escolheu a versão menor. É o melhor
+     * momento possível pra oferecer o upgrade, porque a objeção é preço
+     * e a diferença cai de {delta} para {deltaResgate}.
+     * {precoResgate}, {deltaResgate} e {economia} vêm de PRICING.rescue.
+     */
+    rescate: {
+      eyebrow: "Espera, una última cosa",
+      title: "Llévate el Paquete Completo por {precoResgate}",
+      lead: "Vi que elegiste el básico. Antes de que sigas, déjame hacerte una sola oferta: te dejo el paquete completo por {precoResgate} en lugar de su precio normal. Son apenas {deltaResgate} más de lo que ibas a pagar.",
+      perdeTitle: "Lo que te quedas sin llevar con el básico",
+      perde: [
+        "Guía de Impresión Perfecta — qué papel pedir y con qué gramaje",
+        "16 Separadores Infantiles con historias bíblicas",
+        "Los 150 Salmos Explicados versículo por versículo (+700 págs)",
+        "Playlist con +100 canciones marianas (+15 horas)",
+      ],
+      economiaLabel: "Ahorras {economia} sobre el precio del completo",
+      ctaSim: "Sí, quiero el completo por {precoResgate}",
+      ctaNao: "No, gracias — sigo con el básico",
+      rodape: "Esta oferta solo aparece una vez.",
     },
     full: {
       badge: "⭐ Paquete Completo — El más elegido",
@@ -289,7 +314,7 @@ export const COPY = {
       ],
       cta: "QUIERO EL PAQUETE COMPLETO",
       ctaSub: "Pago 100% seguro",
-      upsellNote: "Solo $31 MXN más por 16 separadores extra y 3 bonos exclusivos",
+      upsellNote: "Solo {delta} más por 16 separadores extra y 3 bonos exclusivos",
     },
   },
 
