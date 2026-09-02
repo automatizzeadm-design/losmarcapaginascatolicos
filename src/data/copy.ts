@@ -374,7 +374,7 @@ export const COPY = {
       },
       {
         q: "¿Por qué cuesta tan poco?",
-        a: "Porque es material digital: no hay impresión, ni envío, ni bodega, ni intermediario que encarezca el camino. Y porque el precio no está puesto para ganar con el material — es una aportación a la Obra, pensada para que estos separadores lleguen a la mayor cantidad de hogares posible. Preferimos que estén en muchas Biblias a que sean caros y estén en pocas.",
+        a: "Porque el precio no está puesto para ganar con el material — es una aportación a la Obra, pensada para que estos separadores lleguen a la mayor cantidad de hogares posible. Preferimos que estén en muchas Biblias a que sean caros y estén en pocas.",
       },
       {
         q: "¿De qué tamaño es cada separador?",
