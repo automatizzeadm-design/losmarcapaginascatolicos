@@ -15,6 +15,7 @@ import { GuaranteeSeal } from "@/components/GuaranteeSeal";
 import { VslPlayer } from "@/components/VslPlayer";
 import { OfertaRescate } from "@/components/OfertaRescate";
 import { Estrelas } from "@/components/Estrelas";
+import { CarrosselDepoimentos } from "@/components/CarrosselDepoimentos";
 import comoUsarAsset from "@/assets/como-usar.png.asset.json";
 import bonusImpresionAsset from "@/assets/bonus-impresion-es.webp.asset.json";
 import bonusNinosAsset from "@/assets/bonus-ninos-es.webp.asset.json";
@@ -194,26 +195,9 @@ function Testimonials() {
       <Title>{COPY.testimonials.title}</Title>
       <Lead>{COPY.testimonials.lead}</Lead>
 
-      <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {COPY.testimonials.items.map((t) => (
-          <figure key={t.name} className="card-soft flex flex-col p-5">
-            <Estrelas nota={t.nota} />
-
-            <blockquote className="mt-3 flex-1 text-[0.9rem] leading-relaxed text-foreground/85">
-              “{t.text}”
-            </blockquote>
-
-            <figcaption className="mt-4 flex items-center gap-3 border-t border-border pt-3">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[0.72rem] font-semibold text-primary">
-                {t.initials}
-              </span>
-              <span className="text-[0.8rem] leading-tight">
-                <strong className="block font-medium text-foreground">{t.name}</strong>
-                <span className="text-muted-foreground">{t.city}</span>
-              </span>
-            </figcaption>
-          </figure>
-        ))}
+      {/* Carrossel contínuo, sangrando até a borda da tela */}
+      <div className="mt-9 -mx-5 sm:-mx-[calc((100vw-980px)/2+1.25rem)]">
+        <CarrosselDepoimentos itens={COPY.testimonials.items} />
       </div>
 
       <p className="mt-5 text-center text-[0.72rem] text-muted-foreground/70">
