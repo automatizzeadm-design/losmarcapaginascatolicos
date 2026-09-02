@@ -1,3 +1,6 @@
+import depoimentoMulherBibliaAsset from "@/assets/depoimento-mulher-biblia.png.asset.json";
+import depoimentoAparecidaAsset from "@/assets/depoimento-aparecida.png.asset.json";
+
 /**
  * TODO O TEXTO DA PÁGINA EM UM ÚNICO ARQUIVO.
  * Espanhol do MÉXICO (não neutro): "separadores" em vez de "marcapáginas",
