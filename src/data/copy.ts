@@ -69,6 +69,10 @@ export const COPY = {
         name: "María Guadalupe H.",
         city: "Guadalajara, Jalisco",
         text: "Los compré para ponerlos en mi Biblia y me encantaron. Las imágenes son preciosas, parecen estampitas antiguas. Los imprimí en papel fotográfico y quedaron perfectos.",
+        imagem: {
+          src: depoimentoAparecidaAsset.url,
+          alt: "Separador impreso junto a la Biblia abierta",
+        },
       },
       {
         initials: "JA",
@@ -76,6 +80,10 @@ export const COPY = {
         name: "José Antonio R.",
         city: "Puebla, Puebla",
         text: "Me llegaron al correo al instante. Ya imprimí varios para regalarle a mi mamá y a mi suegra. Las dos lloraron de la emoción. Valen muchísimo la pena.",
+        imagem: {
+          src: depoimentoMulherBibliaAsset.url,
+          alt: "Clienta mostrando sus separadores impresos junto a su Biblia",
+        },
       },
       {
         initials: "LM",
@@ -104,28 +112,6 @@ export const COPY = {
         name: "Rafael Domínguez",
         city: "Querétaro, Querétaro",
         text: "Los imprimí, los enmiqué y se los regalé a mis padrinos de boda. Quedaron conmovidos. Material precioso y baratísimo para todo lo que trae.",
-      },
-      {
-        initials: "CR",
-        nota: 4.9,
-        name: "Clara Ribeiro",
-        city: "São Paulo, Brasil",
-        text: "Quedé encantada con la calidad. Los imprimí en papel fotográfico y ahora llevo uno con el Sagrado Corazón en cada libro de oración.",
-        imagem: {
-          src: depoimentoMulherBibliaAsset.url,
-          alt: "Cliente mostrando sus separadores del Sagrado Corazón junto a su Biblia",
-        },
-      },
-      {
-        initials: "MR",
-        nota: 5,
-        name: "Marta Regina",
-        city: "Rio de Janeiro, Brasil",
-        text: "Mi separador favorito es el de Nuestra Señora Aparecida. Quedó hermosísimo y resistente, perfecto para mi Biblia de todos los días.",
-        imagem: {
-          src: depoimentoAparecidaAsset.url,
-          alt: "Separador de Nuestra Señora Aparecida junto a la Biblia Sagrada",
-        },
       },
     ],
   },
