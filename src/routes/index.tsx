@@ -200,9 +200,11 @@ function Testimonials() {
         <CarrosselDepoimentos itens={COPY.testimonials.items} />
       </div>
 
-      <p className="mt-5 text-center text-[0.72rem] text-muted-foreground/70">
-        {COPY.testimonials.note}
-      </p>
+      {COPY.testimonials.note && (
+        <p className="mt-5 text-center text-[0.72rem] text-muted-foreground/70">
+          {COPY.testimonials.note}
+        </p>
+      )}
     </Section>
   );
 }

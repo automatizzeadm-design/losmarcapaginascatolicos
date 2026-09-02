@@ -41,18 +41,21 @@ export function CarrosselDepoimentos({ itens }: { itens: readonly Depoimento[] }
           >
             <Estrelas nota={t.nota} />
 
-            {t.imagem ? (
+            {/* Quando há print, ele entra reduzido e o texto continua embaixo:
+                a imagem prova, o texto é o que se lê de relance enquanto a
+                faixa anda. Um sem o outro perde metade do efeito. */}
+            {t.imagem && (
               <img
                 src={t.imagem.src}
                 alt={t.imagem.alt}
                 loading="lazy"
-                className="mt-3 w-full rounded-lg border border-border"
+                className="mt-3 h-[110px] w-full rounded-lg border border-border object-cover"
               />
-            ) : (
-              <blockquote className="mt-3 flex-1 text-[0.9rem] leading-relaxed text-foreground/85">
-                “{t.text}”
-              </blockquote>
             )}
+
+            <blockquote className="mt-3 flex-1 text-[0.9rem] leading-relaxed text-foreground/85">
+              “{t.text}”
+            </blockquote>
 
             <figcaption className="mt-4 flex items-center gap-3 border-t border-border pt-3">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[0.72rem] font-semibold text-primary">

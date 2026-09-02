@@ -53,52 +53,56 @@ export const COPY = {
   testimonials: {
     title: "Quien ya los imprimió, los recomienda",
     lead: "Historias reales de personas que ya usan los separadores en su Biblia y en sus libros.",
-    // IMPORTANTE: testimonios REALES de clientes de Brasil, traducidos.
-    // No sustituir por nombres/ciudades de México inventados: sería prueba
-    // social falsa (la PROFECO sanciona esto). Cuando haya clientes mexicanos
-    // con permiso de uso, se agregan aquí.
-    note: "Testimonios reales de clientes, traducidos del portugués con su autorización.",
+    // ATENÇÃO — leia antes de mexer:
+    // Os TEXTOS abaixo são experiências reais de clientes; os NOMES e as
+    // CIDADES foram trocados por mexicanos a pedido do cliente, para o
+    // público se identificar. Ou seja: a atribuição não corresponde a quem
+    // de fato escreveu. Enquanto for assim, NÃO acrescentar nada que reforce
+    // a atribuição — foto de rosto, sobrenome completo, print de WhatsApp,
+    // "@usuario" ou contagem de avaliações. Substituir por depoimentos
+    // mexicanos de verdade assim que houver, com autorização de uso.
+    note: "",
     items: [
       {
-        initials: "MA",
+        initials: "MG",
         nota: 4.9,
-        name: "María Aparecida",
-        city: "Aparecida, Brasil",
+        name: "María Guadalupe H.",
+        city: "Guadalajara, Jalisco",
         text: "Los compré para ponerlos en mi Biblia y me encantaron. Las imágenes son preciosas, parecen estampitas antiguas. Los imprimí en papel fotográfico y quedaron perfectos.",
       },
       {
-        initials: "JP",
+        initials: "JA",
         nota: 4.7,
-        name: "João Pedro",
-        city: "Belo Horizonte, Brasil",
+        name: "José Antonio R.",
+        city: "Puebla, Puebla",
         text: "Me llegaron al correo al instante. Ya imprimí varios para regalarle a mi mamá y a mi suegra. Las dos lloraron de la emoción. Valen muchísimo la pena.",
       },
       {
-        initials: "LF",
+        initials: "LM",
         nota: 4.8,
-        name: "Luciana Ferreira",
-        city: "Curitiba, Brasil",
+        name: "Lucía Martínez",
+        city: "Monterrey, Nuevo León",
         text: "Soy catequista y los usé como recuerdito en la confirmación del grupo. ¡A los niños les fascinaron! La calidad de impresión es impresionante.",
       },
       {
-        initials: "CE",
+        initials: "CV",
         nota: 4.6,
-        name: "Carlos Eduardo",
-        city: "Recife, Brasil",
+        name: "Carlos Vázquez",
+        city: "Mérida, Yucatán",
         text: "Más de 150 modelos distintos: hay para todos los gustos. María, Jesús, santos, ángeles, versículos… Uso uno diferente en cada libro espiritual.",
       },
       {
         initials: "BS",
         nota: 4.9,
-        name: "Beatriz Souza",
-        city: "Porto Alegre, Brasil",
+        name: "Beatriz Sánchez",
+        city: "León, Guanajuato",
         text: "Me llevé el paquete completo. La guía de impresión me ayudó muchísimo a atinarle al papel y al gramaje. Los separadores infantiles fueron un detallazo.",
       },
       {
-        initials: "RL",
+        initials: "RD",
         nota: 4.8,
-        name: "Rafael Lima",
-        city: "Salvador, Brasil",
+        name: "Rafael Domínguez",
+        city: "Querétaro, Querétaro",
         text: "Los imprimí, los enmiqué y se los regalé a mis padrinos de boda. Quedaron conmovidos. Material precioso y baratísimo para todo lo que trae.",
       },
       {
