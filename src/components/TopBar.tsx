@@ -21,7 +21,7 @@ export function TopBar({ label, countdownLabel }: { label: string; countdownLabe
   }, []);
 
   return (
-    <div className="bg-primary text-primary-foreground">
+    <div className="bg-urgent text-urgent-foreground">
       <div className="mx-auto flex max-w-[980px] flex-wrap items-center justify-center gap-x-3 gap-y-1 px-4 py-2.5 text-center">
         <span className="text-[0.78rem] font-medium tracking-wide">
           ⚡ {label} {today}

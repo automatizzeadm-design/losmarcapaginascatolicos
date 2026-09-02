@@ -48,6 +48,8 @@
   --color-success: var(--success);
   --color-brown: var(--brown);
   --color-brown-deep: var(--brown-deep);
+  --color-urgent: var(--urgent);
+  --color-urgent-foreground: var(--urgent-foreground);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -109,6 +111,11 @@
   /* Marrom de couro antigo — usado no bloco de garantia */
   --brown: oklch(0.42 0.07 55);
   --brown-deep: oklch(0.29 0.055 50);
+
+  /* Vermelho de urgência da barra do topo. Mais quente e saturado que o
+     --destructive (que sinaliza erro), para ler como pressa e não como falha. */
+  --urgent: oklch(0.52 0.2 27);
+  --urgent-foreground: oklch(0.99 0.01 60);
 
   --gradient-brown: linear-gradient(
     160deg,
