@@ -14,6 +14,7 @@ import { TopBar } from "@/components/TopBar";
 import { GuaranteeSeal } from "@/components/GuaranteeSeal";
 import { VslPlayer } from "@/components/VslPlayer";
 import { OfertaRescate } from "@/components/OfertaRescate";
+import { Estrelas } from "@/components/Estrelas";
 import comoUsarAsset from "@/assets/como-usar.png.asset.json";
 import bonusImpresionAsset from "@/assets/bonus-impresion-es.webp.asset.json";
 import bonusNinosAsset from "@/assets/bonus-ninos-es.webp.asset.json";
@@ -196,13 +197,7 @@ function Testimonials() {
       <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {COPY.testimonials.items.map((t) => (
           <figure key={t.name} className="card-soft flex flex-col p-5">
-            <span className="flex gap-0.5 text-gold" aria-label="5 de 5 estrellas">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <svg key={i} viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor">
-                  <path d="m12 2.6 2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.7l-5.9 3.1 1.2-6.6-4.8-4.6 6.6-.9Z" />
-                </svg>
-              ))}
-            </span>
+            <Estrelas nota={t.nota} />
 
             <blockquote className="mt-3 flex-1 text-[0.9rem] leading-relaxed text-foreground/85">
               “{t.text}”

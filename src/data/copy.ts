@@ -58,36 +58,42 @@ export const COPY = {
     items: [
       {
         initials: "MA",
+        nota: 4.9,
         name: "María Aparecida",
         city: "Aparecida, Brasil",
         text: "Los compré para ponerlos en mi Biblia y me encantaron. Las imágenes son preciosas, parecen estampitas antiguas. Los imprimí en papel fotográfico y quedaron perfectos.",
       },
       {
         initials: "JP",
+        nota: 4.7,
         name: "João Pedro",
         city: "Belo Horizonte, Brasil",
         text: "Me llegaron al correo al instante. Ya imprimí varios para regalarle a mi mamá y a mi suegra. Las dos lloraron de la emoción. Valen muchísimo la pena.",
       },
       {
         initials: "LF",
+        nota: 4.8,
         name: "Luciana Ferreira",
         city: "Curitiba, Brasil",
         text: "Soy catequista y los usé como recuerdito en la confirmación del grupo. ¡A los niños les fascinaron! La calidad de impresión es impresionante.",
       },
       {
         initials: "CE",
+        nota: 4.6,
         name: "Carlos Eduardo",
         city: "Recife, Brasil",
         text: "Más de 150 modelos distintos: hay para todos los gustos. María, Jesús, santos, ángeles, versículos… Uso uno diferente en cada libro espiritual.",
       },
       {
         initials: "BS",
+        nota: 4.9,
         name: "Beatriz Souza",
         city: "Porto Alegre, Brasil",
         text: "Me llevé el paquete completo. La guía de impresión me ayudó muchísimo a atinarle al papel y al gramaje. Los separadores infantiles fueron un detallazo.",
       },
       {
         initials: "RL",
+        nota: 4.8,
         name: "Rafael Lima",
         city: "Salvador, Brasil",
         text: "Los imprimí, los enmiqué y se los regalé a mis padrinos de boda. Quedaron conmovidos. Material precioso y baratísimo para todo lo que trae.",
