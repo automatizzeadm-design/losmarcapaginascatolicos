@@ -65,12 +65,20 @@ export const PRICING = {
 } as const;
 
 /**
- * Enquanto a plataforma de pagamento não estiver criada, os botões
- * apontam pra cá. Trocar pelos links reais (Hotmart / Mercado Pago).
+ * Links de checkout.
+ *
+ * Na Hotmart, o que muda o preço é o parâmetro `off` — cada oferta tem o seu.
+ * Por isso o resgate NÃO pode reaproveitar o link do completo: apontado para
+ * lá ele cobraria $174 depois de a página ter prometido $130.
  */
 export const CHECKOUT = {
+  /** PENDENTE — sem link próprio o botão do básico não vende. */
   basic: "#comprar-basico",
-  full: "#comprar-completo",
+
+  full: "https://pay.hotmart.com/W107362486T?off=ipcfl8mi&checkoutMode=10&bid=1788229635351",
+
+  /** PENDENTE — precisa de uma oferta de $130 na Hotmart, com `off` próprio. */
+  rescue: "#comprar-resgate",
 } as const;
 
 /** Contagem regressiva: fecha à meia-noite do dia corrente, no fuso do visitante. */

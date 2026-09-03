@@ -156,7 +156,11 @@ function Hero() {
         </p>
 
         <div className="mx-auto mt-8 max-w-[26rem]">
-          <CtaButton href={CHECKOUT.full} sublabel={COPY.hero.ctaSub}>
+          <CtaButton
+            href={CHECKOUT.full}
+            sublabel={COPY.hero.ctaSub}
+            checkout={{ pacote: "Paquete Completo", preco: PRICING.full.price }}
+          >
             {COPY.hero.cta}
           </CtaButton>
         </div>
@@ -605,7 +609,11 @@ function Offers() {
           </div>
 
           <div className="mt-5">
-            <CtaButton href={CHECKOUT.full} sublabel={COPY.offers.full.ctaSub}>
+            <CtaButton
+              href={CHECKOUT.full}
+              sublabel={COPY.offers.full.ctaSub}
+              checkout={{ pacote: "Paquete Completo", preco: PRICING.full.price }}
+            >
               {COPY.offers.full.cta}
             </CtaButton>
           </div>

@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { capturarOrigem } from "@/lib/rastreio";
 
 function NotFoundComponent() {
   return (
@@ -165,6 +166,12 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  // Guarda de qual criativo ela veio, na primeira renderização do cliente.
+  // Precisa rodar antes de qualquer clique em botão de checkout.
+  useEffect(() => {
+    capturarOrigem();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -88,7 +88,14 @@ export function OfertaRescate({
           </div>
 
           <div className="mt-5">
-            <CtaButton href={CHECKOUT.full}>{preencher(t.ctaSim)}</CtaButton>
+            {/* Link próprio: a oferta de resgate tem preço diferente do
+                completo, então precisa do seu próprio `off` na Hotmart. */}
+            <CtaButton
+              href={CHECKOUT.rescue}
+              checkout={{ pacote: "Rescate — Completo", preco: PRICING.rescue.price }}
+            >
+              {preencher(t.ctaSim)}
+            </CtaButton>
           </div>
 
           {/* A recusa leva ao básico de verdade — a venda dela continua de pé */}

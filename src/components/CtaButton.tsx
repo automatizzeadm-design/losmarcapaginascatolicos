@@ -1,6 +1,10 @@
 import type { ReactNode } from "react";
 
+import { useEffect, useState } from "react";
+
 import { cn } from "@/lib/utils";
+import { rastrearInicioDeCheckout, valorNumerico } from "@/lib/pixel";
+import { comRastreio } from "@/lib/rastreio";
 
 /**
  * CTA principal — bloco dourado de largura total.
@@ -20,6 +24,11 @@ type CtaButtonProps = {
    * Chame preventDefault() dentro para segurar a navegação.
    */
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  /**
+   * Dispara InitiateCheckout no clique. Passe pacote e preço nos botões que
+   * levam de fato ao pagamento — é o evento com que a Meta aprende quem compra.
+   */
+  checkout?: { pacote: string; preco: string };
 };
 
 export function CtaButton({
@@ -29,14 +38,32 @@ export function CtaButton({
   variant = "gold",
   className,
   onClick,
+  checkout,
 }: CtaButtonProps) {
+  /**
+   * O rastreio só existe no navegador, então o href sai do servidor sem ele e
+   * ganha o `src` depois da hidratação. Fazer assim (e não no clique) mantém
+   * o link normal: abrir em nova aba e copiar o endereço seguem funcionando.
+   */
+  const [hrefFinal, setHrefFinal] = useState(href);
+  useEffect(() => setHrefFinal(comRastreio(href)), [href]);
+
+  const aoClicar = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (checkout) {
+      rastrearInicioDeCheckout({
+        pacote: checkout.pacote,
+        valor: valorNumerico(checkout.preco),
+      });
+    }
+    onClick?.(e);
+  };
   const isGold = variant === "gold";
 
   return (
     <span className="block">
       <a
-        href={href}
-        onClick={onClick}
+        href={hrefFinal}
+        onClick={aoClicar}
         className={cn(
           "group/cta relative block overflow-hidden rounded-[16px] px-6 py-4 text-center",
           "font-sans text-[0.95rem] font-semibold tracking-wide",
