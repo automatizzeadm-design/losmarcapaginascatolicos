@@ -15,9 +15,18 @@ import { cn } from "@/lib/utils";
  *
  * A conversa com o player é por postMessage, o protocolo nativo do Vimeo,
  * então não precisa carregar o SDK externo.
+ *
+ * IMPORTANTE — não voltar a condicionar o clique a um "ready" do Vimeo.
+ * O evento nem sempre chega (depende da build do player que o Vimeo serve
+ * naquele dia), e quando não chega o player fica morto: a pessoa clica e não
+ * acontece nada. Aqui o comando é sempre enviado, com reenvio curto para o
+ * caso de o player ainda não estar escutando.
  */
 
 const VIMEO_ORIGIN = "https://player.vimeo.com";
+
+/** Reenvios do comando, em ms. Cobre o player que ainda está subindo. */
+const REENVIOS = [0, 250, 700];
 
 type VslPlayerProps = {
   videoId: string;
@@ -40,7 +49,6 @@ export function VslPlayer({
   className,
 }: VslPlayerProps) {
   const frameRef = useRef<HTMLIFrameElement>(null);
-  const [ready, setReady] = useState(false);
   const [muted, setMuted] = useState(true);
   const [playing, setPlaying] = useState(true);
   /**
@@ -49,15 +57,53 @@ export function VslPlayer({
    * posição a cada tique e devolvemos ela logo depois de ligar o som.
    */
   const timeRef = useRef(0);
+  const timers = useRef<number[]>([]);
 
-  const post = useCallback((method: string, value?: unknown) => {
+  /** Envia uma vez, sem reenvio. Usado internamente. */
+  const postOnce = useCallback((method: string, value?: unknown) => {
     const win = frameRef.current?.contentWindow;
     if (!win) return;
-    win.postMessage(JSON.stringify(value === undefined ? { method } : { method, value }), VIMEO_ORIGIN);
+    win.postMessage(
+      JSON.stringify(value === undefined ? { method } : { method, value }),
+      VIMEO_ORIGIN,
+    );
   }, []);
 
-  // Escuta o player: precisa saber quando ele ficou pronto e quando o
-  // estado muda por fora (fim do vídeo, por exemplo).
+  /**
+   * Envia agora e repete duas vezes. Se o player ainda não estava escutando
+   * no primeiro disparo, um dos seguintes pega. Todos os comandos que usamos
+   * são idempotentes, então repetir não causa efeito colateral.
+   */
+  const post = useCallback(
+    (method: string, value?: unknown) => {
+      REENVIOS.forEach((atraso) => {
+        if (atraso === 0) {
+          postOnce(method, value);
+          return;
+        }
+        timers.current.push(window.setTimeout(() => postOnce(method, value), atraso));
+      });
+    },
+    [postOnce],
+  );
+
+  const registrarEventos = useCallback(() => {
+    postOnce("addEventListener", "play");
+    postOnce("addEventListener", "pause");
+    postOnce("addEventListener", "ended");
+    // Os dois nomes: "playProgress" é o antigo, "timeupdate" o atual.
+    // Registrar ambos garante que a posição seja rastreada em qualquer
+    // versão do player que o Vimeo sirva.
+    postOnce("addEventListener", "playProgress");
+    postOnce("addEventListener", "timeupdate");
+  }, [postOnce]);
+
+  useEffect(() => {
+    const capturados = timers.current;
+    return () => capturados.forEach((t) => window.clearTimeout(t));
+  }, []);
+
+  // Escuta o player para acompanhar o estado (pausa, fim, posição).
   useEffect(() => {
     const onMessage = (e: MessageEvent) => {
       if (e.origin !== VIMEO_ORIGIN) return;
@@ -69,15 +115,7 @@ export function VslPlayer({
       }
 
       if (data.event === "ready") {
-        setReady(true);
-        post("addEventListener", "play");
-        post("addEventListener", "pause");
-        post("addEventListener", "ended");
-        // Os dois nomes: "playProgress" é o antigo, "timeupdate" o atual.
-        // Registrar ambos garante que a posição seja rastreada em qualquer
-        // versão do player que o Vimeo sirva.
-        post("addEventListener", "playProgress");
-        post("addEventListener", "timeupdate");
+        registrarEventos();
         return;
       }
 
@@ -102,24 +140,24 @@ export function VslPlayer({
 
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
-  }, [post]);
+  }, [post, registrarEventos]);
 
   /** Primeiro toque liga o som; dali em diante alterna pausa. */
   const handleSurfaceClick = () => {
-    if (!ready) return;
-
     if (muted) {
       // Ligar o som faz o Vimeo rebobinar. Guardamos onde ela estava e
-      // devolvemos a posição logo em seguida, num tique pra dar tempo do
-      // player aplicar o volume antes do seek.
+      // devolvemos a posição em seguida. E mandamos play junto: se o autoplay
+      // tiver sido bloqueado, este clique é o gesto que finalmente inicia.
       const resumeAt = timeRef.current;
       post("setVolume", 1);
       post("play");
       if (resumeAt > 0.4) {
-        window.setTimeout(() => {
-          post("setCurrentTime", resumeAt);
-          post("play");
-        }, 120);
+        timers.current.push(
+          window.setTimeout(() => {
+            postOnce("setCurrentTime", resumeAt);
+            postOnce("play");
+          }, 300),
+        );
       }
       setMuted(false);
       setPlaying(true);
@@ -138,18 +176,27 @@ export function VslPlayer({
   /* Fixo por videoId: se essa string mudasse entre renders, o iframe
      recarregaria e o vídeo voltaria pro começo.
 
+     `player_id` e `app_id` fazem parte do embed que o próprio Vimeo entrega e
+     ajudam no handshake do postMessage — foram removidos uma vez e o player
+     parou de responder a comando. Não tirar de novo.
+
      `loop=1` existe pra matar a tela de recomendações do Vimeo: em loop o
      vídeo emenda no início e a tela final nunca chega a aparecer. */
   const src = useMemo(
     () =>
       `${VIMEO_ORIGIN}/video/${videoId}` +
       "?autoplay=1&muted=1&loop=1&controls=0&title=0&byline=0&portrait=0&badge=0" +
-      "&autopause=0&playsinline=1&dnt=1&transparent=0",
+      "&autopause=0&playsinline=1&dnt=1&transparent=0&player_id=0&app_id=58479",
     [videoId],
   );
 
   return (
-    <div className={cn("relative overflow-hidden rounded-2xl bg-black shadow-[var(--shadow-lift)]", className)}>
+    <div
+      className={cn(
+        "relative overflow-hidden rounded-2xl bg-black shadow-[var(--shadow-lift)]",
+        className,
+      )}
+    >
       <div style={{ paddingTop: `${ratio}%` }} />
 
       <iframe
@@ -158,6 +205,7 @@ export function VslPlayer({
         title="Video"
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
         referrerPolicy="strict-origin-when-cross-origin"
+        onLoad={registrarEventos}
         className="absolute inset-0 h-full w-full"
         /* O iframe não recebe clique: quem manda é a camada de cima */
         style={{ pointerEvents: "none", border: 0 }}
