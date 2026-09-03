@@ -289,10 +289,16 @@ export const COPY = {
       ],
       cta: "Quiero el paquete básico",
     },
+    /* Empurrão pro completo + formas de pagamento no mesmo bloco: os dois
+       respondem à mesma hesitação — "qual eu levo" e "consigo pagar". */
     nudge: {
       warning: "Todavía estás a tiempo de llevarte la mejor opción",
+      /* O número sai do meio da frase e vira dado: 95 lido de relance
+         pesa muito mais que 95 escondido numa oração. */
+      stat: "95",
+      statLabel: "de cada 100 eligen el Paquete Completo",
       /* {delta} vem de PRICING.upgradeDelta — nunca escrever o valor à mão aqui */
-      text: "95 de cada 100 personas eligen el Paquete Completo: los 4 bonos por solo {delta} más.",
+      text: "Los 4 bonos por solo {delta} más.",
     },
 
     /**
@@ -341,8 +347,9 @@ export const COPY = {
   /* ---------------- PAGO ---------------- */
   payment: {
     title: "Paga como más te acomode",
-    /* Sem isto, muita gente no México não conclui: nem todo mundo tem cartão. */
-    methods: "Tarjeta de crédito o débito · OXXO · SPEI · Mercado Pago",
+    /* Sem isto, muita gente no México não conclui: nem todo mundo tem cartão.
+       Em lista, cada meio vira uma etiqueta — ela procura o dela e acha. */
+    methods: ["Tarjeta de crédito o débito", "OXXO", "SPEI", "Mercado Pago"],
     note: "Precio en pesos mexicanos. Sin mensualidades y sin cargos escondidos.",
   },
 

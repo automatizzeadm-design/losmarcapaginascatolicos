@@ -123,7 +123,6 @@ function Landing() {
       <Package />
       <Bonuses />
       <Offers />
-      <Payment />
       <Guarantee />
       <Faq />
       <FinalCta />
@@ -138,11 +137,7 @@ function Hero() {
   return (
     <header className="relative overflow-hidden border-b border-border bg-[radial-gradient(90%_70%_at_50%_0%,oklch(0.95_0.03_85),transparent_70%)] px-5 pb-14 pt-12 sm:pb-16">
       <div className="mx-auto w-full max-w-[980px] text-center">
-        <div className="animate-rise-fade">
-          <span className="pill">{COPY.hero.eyebrow}</span>
-        </div>
-
-        <h1 className="animate-rise-fade mx-auto mt-6 max-w-[26ch] text-balance font-display text-[2rem] leading-[1.14] text-foreground sm:text-[2.9rem]">
+        <h1 className="animate-rise-fade mx-auto max-w-[26ch] text-balance font-display text-[2rem] leading-[1.14] text-foreground sm:text-[2.9rem]">
           150 Separadores Católicos{" "}
           <span className="text-gradient-gold">listos para imprimir</span>
         </h1>
@@ -621,32 +616,55 @@ function Offers() {
         {COPY.offers.contributionNote}
       </p>
 
-      {/* Empurrão pro pacote completo */}
-      <div className="card-soft mx-auto mt-6 max-w-[46rem] border-gold/45 bg-accent/40 p-5 text-center">
-        <p className="text-[0.92rem] font-semibold text-foreground">
-          ⚠️ {COPY.offers.nudge.warning}
-        </p>
-        <p className="mt-1.5 text-[0.88rem] leading-relaxed text-muted-foreground">
-          {COPY.offers.nudge.text.replace("{delta}", PRICING.upgradeDelta)}
-        </p>
+      {/* Empurrão pro completo + formas de pagamento no mesmo bloco.
+          Eram dois cartões empilhados dizendo coisas que a mesma pessoa
+          pergunta na mesma hora: qual eu levo, e consigo pagar. */}
+      <div className="card-soft mx-auto mt-6 max-w-[46rem] overflow-hidden border-gold/45">
+        {/* Zona 1 — a estatística */}
+        <div className="bg-accent/40 px-6 py-6 text-center">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-gold">
+            {COPY.offers.nudge.warning}
+          </p>
+
+          <p className="mt-3 flex flex-wrap items-baseline justify-center gap-x-2.5 gap-y-1">
+            <span className="font-price text-[2.6rem] font-bold leading-none tracking-tight text-foreground">
+              {COPY.offers.nudge.stat}
+            </span>
+            <span className="text-[0.95rem] font-medium text-foreground/85">
+              {COPY.offers.nudge.statLabel}
+            </span>
+          </p>
+
+          <p className="mt-2 text-[0.88rem] text-muted-foreground">
+            {COPY.offers.nudge.text.replace("{delta}", PRICING.upgradeDelta)}
+          </p>
+        </div>
+
+        {/* Zona 2 — pagamento, em etiquetas para ela achar o meio dela */}
+        <div className="border-t border-gold/25 px-6 py-5 text-center">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            {COPY.payment.title}
+          </p>
+
+          <ul className="mt-3 flex flex-wrap items-center justify-center gap-2">
+            {COPY.payment.methods.map((m) => (
+              <li
+                key={m}
+                className="rounded-full border border-border bg-background px-3 py-1.5 text-[0.8rem] font-medium text-foreground/85"
+              >
+                {m}
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-3 text-[0.8rem] text-muted-foreground">{COPY.payment.note}</p>
+        </div>
       </div>
     </Section>
   );
 }
 
 /* ---------------- PAGO ---------------- */
-
-function Payment() {
-  return (
-    <Section id="pago" className="bg-cream">
-      <div className="card-soft mx-auto max-w-[46rem] p-6 text-center">
-        <h2 className="font-display text-2xl text-foreground">{COPY.payment.title}</h2>
-        <p className="mt-3 text-[1rem] font-medium text-foreground/90">{COPY.payment.methods}</p>
-        <p className="mt-2 text-[0.85rem] text-muted-foreground">{COPY.payment.note}</p>
-      </div>
-    </Section>
-  );
-}
 
 /* ---------------- GARANTÍA ---------------- */
 
