@@ -548,21 +548,6 @@ function Offers() {
             />
           </div>
 
-          <p className="mt-4 text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-gold">
-            {COPY.offers.full.premiumLabel}
-          </p>
-          <div className="mt-2 grid gap-2 sm:grid-cols-2">
-            {COPY.offers.full.premiumItems.map((p) => (
-              <div key={p.title} className="rounded-xl border border-gold/35 bg-accent/40 p-3">
-                <p className="text-[0.68rem] font-semibold text-gold">{p.tag}</p>
-                <p className="mt-0.5 text-[0.85rem] font-medium leading-snug text-foreground">
-                  {p.title}
-                </p>
-                <p className="text-[0.74rem] text-muted-foreground">{p.note}</p>
-              </div>
-            ))}
-          </div>
-
           <ul className="mt-5 grid gap-2.5">
             {COPY.offers.full.includes.map((i) => (
               <li key={i} className="flex items-start gap-2.5 text-[0.9rem] text-foreground/90">

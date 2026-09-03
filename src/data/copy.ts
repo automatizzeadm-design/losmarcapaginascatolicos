@@ -321,19 +321,6 @@ export const COPY = {
     full: {
       badge: "⭐ Paquete Completo — El más elegido",
       title: "150 Separadores + 4 Bonos",
-      premiumLabel: "2 Bonos Premium incluidos",
-      premiumItems: [
-        {
-          tag: "🎁 Bono 03",
-          title: "Los 150 Salmos Explicados",
-          note: "+700 páginas, versículo por versículo",
-        },
-        {
-          tag: "🎁 Bono 04",
-          title: "+100 Canciones Marianas",
-          note: "+15 horas para rezar y meditar",
-        },
-      ],
       includes: [
         "Los 150 separadores principales (5 x 15 cm)",
         "🎁 Bono 1 — Guía de Impresión Perfecta",
