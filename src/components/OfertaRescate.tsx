@@ -1,7 +1,11 @@
+import { useEffect, useState } from "react";
+
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { CtaButton } from "@/components/CtaButton";
 import { COPY } from "@/data/copy";
 import { CHECKOUT, PRICING } from "@/data/offer";
+import { rastrearInicioDeCheckout, valorNumerico } from "@/lib/pixel";
+import { comRastreio } from "@/lib/rastreio";
 
 /**
  * Pop-up de resgate no clique do pacote básico.
@@ -30,6 +34,11 @@ export function OfertaRescate({
   onFechar: () => void;
 }) {
   const t = COPY.offers.rescate;
+
+  // O rastreio só existe no navegador: o link sai do servidor sem ele e
+  // ganha o `src` depois da hidratação, como no CtaButton.
+  const [hrefBasico, setHrefBasico] = useState<string>(CHECKOUT.basic);
+  useEffect(() => setHrefBasico(comRastreio(CHECKOUT.basic)), []);
 
   return (
     <Dialog open={aberto} onOpenChange={(v) => !v && onFechar()}>
@@ -98,9 +107,17 @@ export function OfertaRescate({
             </CtaButton>
           </div>
 
-          {/* A recusa leva ao básico de verdade — a venda dela continua de pé */}
+          {/* A recusa leva ao básico de verdade — a venda dela continua de pé.
+              Carrega o mesmo rastreio e dispara o mesmo evento: uma venda do
+              básico vinda daqui não pode ficar sem criativo no relatório. */}
           <a
-            href={CHECKOUT.basic}
+            href={hrefBasico}
+            onClick={() =>
+              rastrearInicioDeCheckout({
+                pacote: "Paquete Básico",
+                valor: valorNumerico(PRICING.basic.price),
+              })
+            }
             className="mt-3 inline-block text-[0.82rem] text-muted-foreground underline decoration-muted-foreground/40 underline-offset-4 transition-colors hover:text-foreground"
           >
             {t.ctaNao}

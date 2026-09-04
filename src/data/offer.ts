@@ -72,13 +72,14 @@ export const PRICING = {
  * lá ele cobraria $174 depois de a página ter prometido $130.
  */
 export const CHECKOUT = {
-  /** PENDENTE — sem link próprio o botão do básico não vende. */
-  basic: "#comprar-basico",
+  /** Paquete Básico — $100 MXN */
+  basic: "https://pay.hotmart.com/W107362486T?off=sdf6ibay&checkoutMode=10",
 
+  /** Paquete Completo — $174 MXN */
   full: "https://pay.hotmart.com/W107362486T?off=ipcfl8mi&checkoutMode=10&bid=1788229635351",
 
-  /** PENDENTE — precisa de uma oferta de $130 na Hotmart, com `off` próprio. */
-  rescue: "#comprar-resgate",
+  /** Resgate do pop-up — $130 MXN */
+  rescue: "https://pay.hotmart.com/W107362486T?off=04rfmffs&checkoutMode=10",
 } as const;
 
 /** Contagem regressiva: fecha à meia-noite do dia corrente, no fuso do visitante. */
